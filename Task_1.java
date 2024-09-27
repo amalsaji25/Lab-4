@@ -34,6 +34,13 @@ public class Task_1 {
         }
     });
     System.out.println(redAndHeavyApple1);
+
+
+    System.out.println("Print only the weight of each apple:");
+    prettyPrintApple(inventory, new Task_1.AppleWeightFormatter());
+
+    System.out.println("\nPrint with weight and heaviness/lightness:");
+    prettyPrintApple(inventory, new Task_1.AppleFancyFormatter());
     }
 
     public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color){
@@ -44,6 +51,33 @@ public class Task_1 {
             }
         }
         return result;
+    }
+
+    public interface AppleFormatter{
+        String format(Task_1.Apple apple);
+    }
+
+    public static class AppleWeightFormatter implements AppleFormatter{
+        @Override
+        public String format(Task_1.Apple apple) {
+            return "Apple weighs " + apple.getWeight() + "g";
+        }
+    }
+
+    public static class AppleFancyFormatter implements AppleFormatter{
+
+        @Override
+        public String format(Task_1.Apple apple) {
+            String lightOrHeavy = apple.getWeight() > 150 ? "heavy" : "light";
+            return "A " + lightOrHeavy + " " + apple.getColor().name().toLowerCase() + " apple of " + apple.getWeight() + "g";
+        }
+    }
+
+    public static void prettyPrintApple(List<Task_1.Apple> inventory, AppleFormatter formatter) {
+        for (Task_1.Apple apple : inventory) {
+            String output = formatter.format(apple);
+            System.out.println(output);
+        }
     }
 
 
