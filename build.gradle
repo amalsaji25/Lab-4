@@ -26,6 +26,7 @@ jacocoTestReport {
         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
     }
 
+    // Ootional to add, used to include and exclude classes that you want to come up under code coverage report
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, include: ['**/Task_1.class'])
