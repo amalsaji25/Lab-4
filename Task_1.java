@@ -35,6 +35,7 @@ public class Task_1 {
     });
     System.out.println(redAndHeavyApple1);
 
+    /*Task 2*/
 
     System.out.println("Print only the weight of each apple:");
     prettyPrintApple(inventory, new Task_1.AppleWeightFormatter());
